@@ -24,11 +24,19 @@ $(document).ready(function () {
           let otherNames = data.other_name.length > 0 ? data.other_name.join(', ') : 'N/A';
           let plantCard = `
           <div class="plant-card card m-2" style="width: 18rem;">
-            <img src="${imageUrl}" alt="${data.common_name}" class="card-img-top">
+          <img src="${imageUrl}" alt="${data.common_name}" class="card-img-top">
+          <div class="card-header">${data.common_name}</div>
             <div class="card-body">
-              <h4 class="card-title">${data.common_name}</h4>
-              <h5 class="card-subtitle text-body-secondary">Scientific name: ${data.scientific_name.join(', ')}</h5>
-              <h6 class="card-subtitle text-body-secondary">Other names: ${otherNames}</h6>
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item">Scientific name: ${data.scientific_name.join(', ')}</li>
+              <li class="list-group-item">Other names: ${otherNames}</li>
+              <li class="list-group-item">${data.cycle}</li>
+              <li class="list-group-item">${data.watering}</li>
+              <li class="list-group-item">${data.sunlight}</li>
+
+              </ul>
+              <a href="#" class="btn btn-primary">More details</a>
+              <a href="#" class="btn btn-primary">Add to cart</a>
             </div>
           </div>
           `;
