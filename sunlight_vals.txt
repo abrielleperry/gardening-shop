@@ -1,0 +1,48 @@
+Unique sunlight values:
+Array (23)
+0
+"full sun"
+1
+"Full sun"
+2
+"part shade"
+3
+"filtered shade"
+4
+"part sun/part shade"
+5
+"full sun only if soil kept moist"
+6
+"full shade"
+7
+"deep shade"
+8
+"Sun"
+9
+"Part shade"
+10
+"Partial sun Shade"
+11
+"Part sun/part shade"
+12
+"Sheltered"
+13
+"Full sun Partial sun"
+14
+"Deciduous Shade (Spring Sun)"
+15
+"Partial Shade"
+16
+"Shade"
+17
+"Deep shade"
+18
+"Filtered shade"
+19
+"Full sun only if soil kept moist"
+20
+"Full sun Partial sun Shade"
+21
+"Partial sun"
+22
+"sun-part shade"

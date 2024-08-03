@@ -1,0 +1,17 @@
+.multi-colored-circle {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
