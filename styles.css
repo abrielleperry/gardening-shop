@@ -36,27 +36,32 @@ body {
   background-color: #fff !important;
 }
 
-.card {
+.plant-card {
   background-color: #ffff !important;
   border-color: #81c784;
   border-radius: 2em !important;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   overflow: hidden;
-  margin: 10px;
+  margin: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-img-top {
   width: 100%;
-  border-bottom-right-radius: 4em;
   height: auto;
+  border-bottom-right-radius: 4em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
   padding: 16px;
   color: #0a0d0b;
+  flex: 1;
 }
 
 .common-name {
@@ -64,6 +69,7 @@ body {
   font-size: 24px;
   margin-bottom: 0px;
 }
+
 .plant-title {
   font-family: "Lora";
   font-size: 16px;
@@ -76,6 +82,11 @@ body {
   background-color: #e07a5f;
   border-color: #e07a5f;
   font-family: "Montserrat";
+}
+
+.plant-description {
+  display: flex;
+  justify-content: space-around;
 }
 
 .plant-description svg {
@@ -106,6 +117,27 @@ body {
   font-family: "Montserrat";
 }
 
+.price-buy span {
+  font-size: 10px;
+}
+
 .price-buy {
-  background-image: ;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+  overflow: hidden;
+  background-image: url("images/dirt.png");
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+  .plant-card {
+    max-width: 100%;
+    margin: 5px 0;
+  }
 }

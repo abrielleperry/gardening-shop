@@ -1,4 +1,12 @@
 $(document).ready(function () {
+  function showLoader() {
+    $("#loader").show();
+  }
+
+  function hideLoader() {
+    $("#loader").hide();
+  }
+
   // map sunlight conditions for catagories
   const sunlightMapping = {
     "full sun": [
@@ -125,17 +133,15 @@ $(document).ready(function () {
     "Weeds and Wild Plants": ["Weed", "Thrift", "Thistle", "Wildflower"]
   };
 
-  function showLoader() {
-    $("#loader").show();
-  }
-
-  function hideLoader() {
-    $("#loader").hide();
-  }
-
   function normalizePlantType(value) {
+    if (!value) {
+      return value;
+    }
+    const lowerCaseValue = value.toLowerCase();
     for (let key in typeMapping) {
-      if (typeMapping[key].includes(value)) {
+      if (
+        typeMapping[key].map((v) => v.toLowerCase()).includes(lowerCaseValue)
+      ) {
         return key;
       }
     }
@@ -205,10 +211,13 @@ $(document).ready(function () {
 
   function cleanDimension(dimension) {
     if (!dimension) return "";
-    const match = dimension.match(
-      /(\d+(\.\d+)?\s*(feet|ft|meters|m|cm|inches|in))/i
-    );
-    return match ? match[0] : "";
+    dimension = dimension.replace(/height\s*/i, "").trim();
+    dimension = dimension.replace(/(\d+)\.\d+/g, "$1");
+    dimension = dimension.replace(/\s+/g, " ").trim();
+    if (dimension === "0 cm" || dimension === "0 - 0 cm" || dimension === "") {
+      return "";
+    }
+    return dimension;
   }
 
   function loadPlantApi() {
@@ -254,10 +263,15 @@ $(document).ready(function () {
   function displayPlants(plants) {
     $("#plant-container").empty();
     plants.forEach((data) => {
-      let imageUrl =
-        data.default_image && data.default_image.small_url
-          ? data.default_image.small_url
-          : "https://via.placeholder.com/150";
+      const normalizedType = normalizePlantType(data.type);
+      if (normalizedType === "Trees") {
+        return;
+      }
+
+      if (!data.default_image || !data.default_image.small_url) {
+        return;
+      }
+      let imageUrl = data.default_image.small_url;
       let otherNames =
         data.other_name.length > 0 ? data.other_name.join(", ") : "N/A";
       let dimension = cleanDimension(data.dimension);
@@ -268,52 +282,56 @@ $(document).ready(function () {
       let randomPrice = getRandomPrice();
 
       let plantCard = `
-  <div class="plant-card card">
-    
-    <img src="${imageUrl}" alt="${
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div class="plant-card card h-100">
+      <img src="${imageUrl}" alt="${
         data.common_name
-      }" class="plant-card-img card-img-top img-fluid">
-  
-    <div class="card-body">
-    <div class="plant-title">
-    <p class="common-name">${data.common_name}</p>
-      <p>${data.scientific_name.join(", ")}</p>
-      </div>
-      <div class="plant-description row mx-auto   ">
-        <div class="col-content col-3">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#2c402f" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 32 0 160c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/></svg>
-        <p class="text-capitalize">${data.type}</p>
+      }" class="card-img-top img-fluid">
+      <div class="card-body">
+        <div class="plant-title">
+          <p class="common-name text-capitalize">${data.common_name}</p>
+          <p>${data.scientific_name.join(", ")}</p>
         </div>
-        <div class="col-content col-3">
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 22V2M12 22L8 18M12 22L16 18M12 2L8 6M12 2L16 6" stroke="#40241E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>        
-<p>${dimension}</p>
+        <div class="plant-description row mx-auto">
+          <div class="col-content col-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#2c402f" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 32 0 160c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/>
+            </svg>
+            <p class="text-capitalize">${data.type}</p>
+          </div>
+          <div class="col-content col-3">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22V2M12 22L8 18M12 22L16 18M12 2L8 6M12 2L16 6" stroke="#40241E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <p>${dimension}</p>
+          </div>
         </div>
-    <div class="col-content col-3  ${data.sunlight}">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="#f5c665" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/>
-              </svg>
-              <p class="text-capitalize">${firstSunlightCondition}</p>
-            </div>
-<div class="col-content col-3 ${data.watering}">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#306670" d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191.1 0l1.8 0c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192zM96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112c8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 0-80-35.8-80-80z"/></svg>  <p>${
-        data.watering
-      }</p>
-</div>
-
+        <div class="plant-description row mx-auto">
+          <div class="col-content col-3 ${data.sunlight}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#f5c665" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/>
+            </svg>
+            <p class="text-capitalize">${firstSunlightCondition}</p>
+          </div>
+          <div class="col-content col-3 ${data.watering}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+              <path fill="#306670" d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191.1 0l1.8 0c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192zM96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112c8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 0-80-35.8-80-80z"/></svg>
+            <p>${data.watering}</p>
+          </div>
+        </div>
       </div>
-      <div class="row price-buy">
-    <div class="col">
-    <p>$${randomPrice}</p>
+      <div class="price-buy">
+        <div class="row">
+          <div class="col">
+            <p>$${randomPrice}</p>
+          </div>
+          <div class="col">
+            <a href="#" class="btn btn-primary">Add to cart</a>
+          </div>
+        </div>
+      </div>
     </div>
-    
-<div class="col">
-        <a href="#" class="btn btn-primary">Add to cart</a>
-  
-</div>    
-      </div>
-      </div>
-      </div>
-  
+  </div>
 `;
 
       $("#plant-container").append(plantCard);
