@@ -5,14 +5,11 @@
   font-style: normal;
 }
 
-.card-header {
-  font-family: "Lora", serif;
-  background-color: #fff !important;
-  border-bottom: none;
-}
-
-.plant-card.card {
-  background-color: #fff;
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .multi-colored-circle {
@@ -36,4 +33,79 @@
 body {
   width: 100vw;
   height: 100vh;
+  background-color: #fff !important;
+}
+
+.card {
+  background-color: #ffff !important;
+  border-color: #81c784;
+  border-radius: 2em !important;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  width: 100%;
+  border-bottom-right-radius: 4em;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 16px;
+  color: #0a0d0b;
+}
+
+.common-name {
+  font-family: "Lora";
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+.plant-title {
+  font-family: "Lora";
+  font-size: 16px;
+  text-align: start;
+  color: #0a0d0b;
+  white-space: nowrap;
+}
+
+.card .btn {
+  background-color: #e07a5f;
+  border-color: #e07a5f;
+  font-family: "Montserrat";
+}
+
+.plant-description svg {
+  max-height: 30px;
+  max-width: 30px;
+  align-items: center;
+}
+
+.col-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.col-content p {
+  font-family: "Montserrat";
+  text-align: center;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.col-content.multiple-conditions p {
+  white-space: pre-wrap;
+}
+
+.price-buy p {
+  font-family: "Montserrat";
+}
+
+.price-buy {
+  background-image: ;
 }
