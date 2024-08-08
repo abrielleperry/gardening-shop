@@ -2,15 +2,21 @@
   "name": "gardening-shop",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "gsap.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -c-1 ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "gsap": "^3.12.5",
+    "jquery": "^3.6.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "slick-carousel": "^1.8.1"
   }
 }

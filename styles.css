@@ -12,6 +12,115 @@
   font-style: normal;
 }
 
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #2c402f;
+}
+
+.bh-logo.mr-4.img-fluid {
+  width: 200px;
+}
+
+.house-icon.mr-4.mb-3.mb-sm-0.mr-sm-3.img-fluid {
+  width: 60px;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  background-image: url("images/holding-plants.jpg");
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  opacity: 100%;
+}
+
+.header-one {
+  justify-content: center;
+  text-align: center;
+}
+
+.header-one h1 {
+  font-family: "Lora";
+  color: #fff;
+}
+
+.care {
+  display: flex;
+}
+
+.splide__slide > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.splide__track {
+  display: flex;
+  gap: 0 !important;
+}
+
+.splide__slide {
+  margin-right: 0 !important;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.animation {
+  display: flex;
+  flex-direction: column;
+  order: 1;
+}
+
+.plant-tray,
+.home {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plant-tray img,
+.home img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plant-tray p,
+.home p {
+  font-size: 100px;
+  text-align: center;
+  position: relative;
+  font-weight: 900;
+  color: #fff;
+  opacity: 0;
+  left: 200px;
+}
+
+.dot {
+  background-color: white;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  position: absolute;
+}
+
 .multi-colored-circle {
   width: 16px;
   height: 16px;
@@ -34,6 +143,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #fff !important;
+  flex-direction: column;
 }
 
 .plant-card {
@@ -41,14 +151,13 @@ body {
   border-color: #81c784;
   border-radius: 2em !important;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   overflow: hidden;
   margin: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .card-img-top {
@@ -113,17 +222,15 @@ body {
   white-space: pre-wrap;
 }
 
-.price-buy p {
+.bottom p {
   font-family: "Montserrat";
 }
 
-.price-buy span {
+.bottom span {
   font-size: 10px;
 }
 
-.price-buy {
-  position: relative;
-  z-index: 1;
+.bottom {
   padding: 10px;
   border-bottom-left-radius: 2em;
   border-bottom-right-radius: 2em;
@@ -133,6 +240,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   flex-shrink: 0;
+  height: 80px;
 }
 
 @media (max-width: 576px) {
@@ -140,4 +248,15 @@ body {
     max-width: 100%;
     margin: 5px 0;
   }
+}
+
+.btn img {
+  height: 1em;
+  width: 1em;
+}
+
+.bottom .btn {
+  display: flex;
+  align-self: center;
+  border-radius: 100%;
 }
