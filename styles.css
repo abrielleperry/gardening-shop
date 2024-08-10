@@ -13,8 +13,36 @@
 }
 
 @font-face {
+  font-family: "The Seasons Bold";
+  src: url("fonts/theseason-bold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "theseasons";
   src: url("fonts/theseasons-reg.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lora-Medium";
+  src: url("fonts/Lora-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "theseasons-bold";
+  src: url("fonts/theseasons-bd.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -44,28 +72,48 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 800px;
   opacity: 100%;
 }
 
+.headers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .header-one {
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .header-one h1 {
-  font-family: "theseasons";
+  font-family: "the seasons bold";
   color: #fff;
+  font-size: 70px;
 }
 
 .header-one h3 {
-  font-family: "theseasons";
+  font-family: "the seasons bold";
   color: #fff;
+  font-size: 50px;
 }
 
-.header-one h5 {
+.mission {
+  display: flex;
+  width: 100%;
+  height: 400px;
+}
+
+.mission img {
+  border-radius: 1em;
+}
+
+.mission h5 {
   font-family: "montserrat";
   color: #fff;
+  font-size: 20px;
 }
 
 .care {
@@ -308,12 +356,40 @@ body {
 }
 
 /* MODAL */
-.description .p {
+
+.modal-dialog {
+  width: 100%;
+}
+
+.description p {
   text-align: justify;
+  font-family: "Montserrat";
+  font-size: 16px;
 }
 
 .modal-img img {
   float: left;
   max-width: 150px;
   max-height: 150px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 1em;
+  margin-right: 15px;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-header h1 {
+  font-family: "Lora-Medium";
+  font-size: 26px;
+}
+
+.modal-header p {
+  font-family: "Montserrat-Medium";
+  font-size: 16px;
+}
+
+.table-responsive tr {
+  font-family: "Montserrat";
 }

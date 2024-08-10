@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   function showLoader() {
     $("#loader").show();
   }
@@ -153,9 +153,7 @@ $(document).ready(function () {
     }
     const lowerCaseValue = value.toLowerCase();
     for (let key in typeMapping) {
-      if (
-        typeMapping[key].map((v) => v.toLowerCase()).includes(lowerCaseValue)
-      ) {
+      if (typeMapping[key].map(v => v.toLowerCase()).includes(lowerCaseValue)) {
         return key;
       }
     }
@@ -177,7 +175,7 @@ $(document).ready(function () {
     let cycleFilter = $("#cycle").val().trim().toLowerCase();
     let indoorFilter = $("#indoor").val().trim().toLowerCase();
     let typeFilter = $("#type").val().trim();
-    let filteredPlants = plants.filter((plant) =>
+    let filteredPlants = plants.filter(plant =>
       filterPlants(
         plant,
         sunlightFilter,
@@ -202,7 +200,7 @@ $(document).ready(function () {
       sunlightFilter === "" ||
       (Array.isArray(plant.sunlight) &&
         plant.sunlight
-          .map((s) => s.trim().toLowerCase())
+          .map(s => s.trim().toLowerCase())
           .includes(sunlightFilter));
     let wateringMatch =
       wateringFilter === "" ||
@@ -239,14 +237,14 @@ $(document).ready(function () {
       type: "GET",
       url: "detailed_plants.json",
       dataType: "json",
-      beforeSend: function () {
+      beforeSend: function() {
         showLoader();
       },
-      success: function (response) {
+      success: function(response) {
         hideLoader();
-        response.forEach((plant) => {
+        response.forEach(plant => {
           if (Array.isArray(plant.sunlight)) {
-            plant.sunlight = plant.sunlight.map((value) =>
+            plant.sunlight = plant.sunlight.map(value =>
               normalizeSunlightCondition(value.trim().toLowerCase())
             );
           }
@@ -255,14 +253,13 @@ $(document).ready(function () {
           }
         });
         displayPlants(response);
-        $("#sunlight, #watering, #cycle, #indoor, #type").on(
-          "change",
-          function () {
-            applyFilters(response);
-          }
-        );
+        $(
+          "#sunlight, #watering, #cycle, #indoor, #type"
+        ).on("change", function() {
+          applyFilters(response);
+        });
       },
-      error: function (textStatus, errorThrown) {
+      error: function(textStatus, errorThrown) {
         hideLoader();
         console.error("Error: " + textStatus, errorThrown);
         alert("Failed to load plant data: " + errorThrown);
@@ -276,7 +273,7 @@ $(document).ready(function () {
 
   function displayPlants(plants) {
     $("#plant-container").empty();
-    plants.forEach((data) => {
+    plants.forEach(data => {
       const normalizedType = normalizePlantType(data.type);
       if (normalizedType === "Trees") {
         return;
@@ -356,14 +353,12 @@ $(document).ready(function () {
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header row">
-          <h1 class="modal-title fs-5 text-capitalize " id="exampleModalLabel">
+        <button type="button" class="btn-close me-3 mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title  text-capitalize " id="exampleModalLabel">
       ${data.common_name}</h1>
     
-      <h5 class="modal-title fs-5 text-capitalize " id="exampleModalLabel"> Scientific Name:
-      ${data.scientific_name}</h5>
-        <h5 class="modal-title fs-5 text-capitalize " id="exampleModalLabel"> Scientific Name:
-    Other names: ${data.otherNames_name}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <p class="  text-capitalize " id="exampleModalLabel"> Scientific Name:
+      ${data.scientific_name}</p>
         </div>
       <div class="modal-body">
   <div class="container-fluid">
@@ -404,41 +399,34 @@ $(document).ready(function () {
               </div>
           </div>
 </div>
-<div class="row">
-<div class="row-md-3 ms-auto description">
-
+<div class="table-responsive">
+<table class="table">
+  <tbody>
+    <tr>
+  <td>Hardiness</td>
+    <td>${data.hardiness.min} - ${data.hardiness.max}</td>
+    </tr>
+    <tr>
+    <td>Growth Rate</td>
+    <td>${data.growth_rate}</td>
+    </tr>
+    <tr>
+    <td>Care Level</td>
+      <td> ${data.care_level}</td>
+  </tr>
+  <tr>
+      <td>Watering</td>
+      <td>${data.watering_general_benchmark.value} ${data
+        .watering_general_benchmark.unit}</td>
+      </tr>
+      <tr>
+      <td>Pruning</td>
+      <td>${data.pruning_month}</td>
+    </tr>
+  </tbody>
 </div>
-<div class="col-md-2 ms-auto">
-      <p>Growth Rate: ${data.growth_rate}</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 ms-auto">
-        <p>Hardiness: ${data.hardiness.min} - ${data.hardiness.max}</p>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-9"> Care Level:
-        ${data.care_level}
-        <div class="row">
-          <div class="col-8 col-sm-6">
-              <div class="col-md-6 ms-auto">
-<p>Watering: ${data.watering_general_benchmark.value} -  ${data.watering_general_benchmark.unit}</p>             
-      </div>
-
-          </div>
-          <div class="col-4 col-sm-6">
-        <p>Pruning: ${data.pruning_month}</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>
