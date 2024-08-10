@@ -342,7 +342,7 @@ $(document).ready(function () {
                         </div>
                     </div>
                     <div class="bottom">
-                    <button class="btn mx-auto">
+                    <button type="button" class="btn  mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <img src="images/plus-solid.svg" alt="Cart Icon">
 
                     </button>
@@ -351,7 +351,100 @@ $(document).ready(function () {
             </div>
         `;
 
+      let plantModal = `
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header row">
+          <h1 class="modal-title fs-5 text-capitalize " id="exampleModalLabel">
+      ${data.common_name}</h1>
+    
+      <h5 class="modal-title fs-5 text-capitalize " id="exampleModalLabel"> Scientific Name:
+      ${data.scientific_name}</h5>
+        <h5 class="modal-title fs-5 text-capitalize " id="exampleModalLabel"> Scientific Name:
+    Other names: ${data.otherNames_name}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      <div class="modal-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="description">
+<div class="modal-img ">
+        <img src="${imageUrl}" alt="${data.common_name}" >
+  
+        </div>
+        <p>${data.description}
+</div>
+</p>
+        <div class="plant-description row mx-auto">
+              <div class="col-content col-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path fill="#2c402f" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 32 0 160c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/>
+                  </svg>
+                  <p class="">${data.type}</p>
+              </div>
+              <div class="col-content col-3">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 22V2M12 22L8 18M12 22L16 18M12 2L8 6M12 2L16 6" stroke="#40241E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <p>${dimension}</p>
+              </div>
+          </div>
+          <div class="plant-description row mx-auto">
+              <div class="col-content col-3 ${data.sunlight}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                      <path fill="#f5c665" d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/>
+                  </svg>
+                  <p class="text-capitalize">${firstSunlightCondition}</p>
+              </div>
+              <div class="col-content col-3 ${data.watering}">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                      <path fill="#306670" d="M192 512C86 512 0 426 0 320C0 228.8 130.2 57.7 166.6 11.7C172.6 4.2 181.5 0 191.1 0l1.8 0c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192zM96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112c8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 0-80-35.8-80-80z"/></svg>
+                  <p>${data.watering}</p>
+              </div>
+          </div>
+</div>
+<div class="row">
+<div class="row-md-3 ms-auto description">
+
+</div>
+<div class="col-md-2 ms-auto">
+      <p>Growth Rate: ${data.growth_rate}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 ms-auto">
+        <p>Hardiness: ${data.hardiness.min} - ${data.hardiness.max}</p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9"> Care Level:
+        ${data.care_level}
+        <div class="row">
+          <div class="col-8 col-sm-6">
+              <div class="col-md-6 ms-auto">
+<p>Watering: ${data.watering_general_benchmark.value} -  ${data.watering_general_benchmark.unit}</p>             
+      </div>
+
+          </div>
+          <div class="col-4 col-sm-6">
+        <p>Pruning: ${data.pruning_month}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        `;
       $("#plant-container").append(plantCard);
+      $("#plant-container").append(plantModal);
     });
 
     updatePlantCount(plants.length);
