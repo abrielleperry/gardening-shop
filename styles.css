@@ -20,8 +20,22 @@
 }
 
 @font-face {
-  font-family: "Montserrat-Medium";
+  font-family: "The Seasons it";
+  src: url("fonts/Fontspring-DEMO-theseasons-it.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat Medium";
   src: url("fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat bold";
+  src: url("fonts/Montserrat-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -52,21 +66,29 @@
   padding: 0;
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff !important;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* NAVBAR */
+
 .navbar {
   background-color: #2c402f;
 }
 
-.bh-logo.mr-4.img-fluid {
-  width: 200px;
-}
-
-.house-icon.mr-4.mb-3.mb-sm-0.mr-sm-3.img-fluid {
-  width: 60px;
-}
+/* HERO */
 
 .hero {
   display: flex;
-  justify-content: center;
   background-image: url("images/holding-plants.jpg");
   width: 100%;
   background-position: center;
@@ -77,15 +99,11 @@
 }
 
 .headers {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .header-one {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  margin-left: 20px;
 }
 
 .header-one h1 {
@@ -100,24 +118,80 @@
   font-size: 50px;
 }
 
-.mission {
-  display: flex;
+/* ABOUT */
+
+.about {
   width: 100%;
-  height: 400px;
+  height: 450px;
+  background-color: #2c402f;
 }
 
-.mission img {
-  border-radius: 1em;
+.about-container {
+  margin: 60px;
+  border-radius: 4em;
+  position: relative;
 }
 
-.mission h5 {
+.text-container {
+  width: 50%;
+  margin: 70px;
+}
+
+.text-container h5 {
+  font-family: "the seasons";
+  color: #fff;
+  font-size: 40px;
+  color: #0a0d0b;
+  text-align: center;
+}
+
+.text-container p {
   font-family: "montserrat";
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
+  color: #0a0d0b;
+  text-align: center;
 }
+
+.potted-plant {
+  position: absolute;
+  left: -60px;
+  top: -50px;
+}
+
+.potted-plant img {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* CARE */
 
 .care {
   display: flex;
+  background-color: #2c402f;
+  padding-bottom: 50px;
+}
+
+.our-team {
+  position: relative;
+}
+
+.our-team-text {
+  position: absolute;
+  top: 130px;
+  left: 80px;
+}
+
+.our-team-text span {
+  font-size: 40px;
+  font-family: "montserrat bold";
+}
+
+.our-team-text p {
+  color: #fff;
+  font-family: "montserrat";
+  text-align: left;
+  font-size: 17px;
 }
 
 .splide__slide > img {
@@ -136,55 +210,7 @@
   margin-right: 0 !important;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.animation {
-  display: flex;
-  flex-direction: column;
-  order: 1;
-}
-
-.plant-tray,
-.home {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.plant-tray img,
-.home img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.plant-tray p,
-.home p {
-  font-size: 100px;
-  text-align: center;
-  position: relative;
-  font-weight: 900;
-  color: #fff;
-  opacity: 0;
-  left: 200px;
-}
-
-.dot {
-  background-color: white;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  position: absolute;
-}
+/* FILTER */
 
 .multi-colored-circle {
   width: 16px;
@@ -204,40 +230,11 @@
   cursor: pointer;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff !important;
-  flex-direction: column;
-}
+/* PLANT PRODUCT SECTION */
 
-.flip-card {
-  perspective: 1000px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card.do-flip .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
+#plant-count {
+  font-family: "Montserrat medium";
+  font-size: 18px;
 }
 
 .plant-card {

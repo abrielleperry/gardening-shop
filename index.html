@@ -30,61 +30,49 @@
   </head>
   <body class="d-flex m-0 p-0">
     <header>
-      <nav class="navbar navbar-expand-sm navbar-dark mx-auto">
-        <button
-          class="navbar-toggler border-0 align-self-start mt-3"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-line1"></span>
-          <span class="navbar-line2 my-1"></span>
-          <span class="navbar-line3"></span>
-        </button>
-        <a
-          class="navbar-brand mx-auto d-flex flex-column flex-sm-row align-items-center mt-3"
-          href="homepage.html"
-        >
-          <img
-            src="images/logos/BHIconWhite.png"
-            alt="navbar-logo"
-            width="37px"
-            class="house-icon mr-4 mb-3 mb-sm-0 mr-sm-3 img-fluid"
-          />
-          <img
-            src="images/logos/BHWhite.png"
-            alt="navbar-logo-text"
-            width="114px"
-            class="bh-logo mr-4 img-fluid"
-          />
-        </a>
-        <div class="collapse navbar-collapse text-center mt-3" id="navbarNav">
-          <ul class="navbar-nav ml-auto font-weight-bold">
-            <li class="nav-item">
-              <a class="nav-link text-white px-1" href="courses.html"
-                >SHOP PLANTS</a
-              >
-            </li>
-            <li class="nav-item px-0 px-sm-5 py-2 py-sm-0">
-              <a class="nav-link text-white px-1" href="pricing.html"
-                >SHOP PLANTS</a
-              >
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link px-1" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                  <path
-                    fill="#f2b56b"
-                    d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
-                  />
-                </svg>
-              </a>
-            </li>
-          </ul>
+      <nav class="navbar navbar-expand">
+        <div class="container-fluid mx-4">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="images/logos/BHIconWhite.png"
+              alt="navbar-logo"
+              width="90px"
+              class="house-icon"
+            />
+            <img
+              src="images/logos/BHWhite.png"
+              alt="navbar-logo-text"
+              width="200px"
+              class="bh-logo"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 gap-5 ">
+              <li class="nav-item">
+                <a class="nav-link text-white">SHOP PLANTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white">ABOUT US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ">
+                  <i class="fa-solid fa-cart-shopping" style="color: #fff"></i>
+                </a>
+              </li>
+            </ul>
+            </div>
+        </div>
         </div>
       </nav>
       <section class="hero">
@@ -93,44 +81,44 @@
             <h1>Welcome to BloomHouse</h1>
             <h3>Where Passionate Gardeners Find Their Perfect Plants</h3>
           </div>
-          <div class="header-two"></div>
         </div>
       </section>
-      <section class="mission">
-        <div>
-          <h2>Featured Collections</h2>
-          <ul>
-            <li>BloomHouse Favorites: Our top picks for this season.</li>
-            <li>
-              Herb Garden Essentials: Grow your own kitchen garden with our
-              selection of herbs.
-            </li>
-            <li>
-              Pollinator Paradise: Attract butterflies and bees with these
-              pollinator-friendly plants.
-            </li>
-            <li>
-              Shade Garden Beauties: Perfect plants for those tricky, low-light
-              spots.
-            </li>
-          </ul>
+    </header>
+    <main>
+      <div class="about container-fluid d-flex">
+        <div class="about-container bg-white">
+          <div class="row justify-content-end">
+            <div class="text-container col-9 p-4">
+              <h5>
+                Our Promise:
+                <span>Fresh, Healthy Plants Delivered to Your Doorstep</span>
+              </h5>
+              <p>
+                We source the healthiest plants directly from trusted nurseries
+                and deliver them straight to your door. With BloomHouse, you can
+                rest assured that your plants will arrive fresh, vibrant, and
+                ready to flourish in your garden. Our commitment to quality
+                means that every plant we send out has been carefully selected
+                and packed with care.
+              </p>
+            </div>
+          </div>
+          <div class="potted-plant">
+            <img src="images/angel-plant.png" alt="" />
+          </div>
         </div>
-        <img src="images/gardening-setup.jpg" alt="gardening setup" />
-
-        <h5 class="text-black">
-          At BloomHouse, we bring the joy of gardening to your doorstep. Explore
-          our curated selection of top-quality plants, chosen to flourish in
-          your garden and home.
-        </h5>
-      </section>
+      </div>
       <section class="care">
-        <div class="col-3">
-          <p>
-            Our team of dedicated plant experts meticulously nurtures each plant
-            before it reaches your doorstep. With a passion for greenery and
-            years of experience, we ensure every plant is healthy, vibrant, and
-            ready to thrive in its new home.
-          </p>
+        <div class="our-team col-3">
+          <img src="images/vine-arch.png" alt="vine on arch" />
+          <div class="our-team-text col-5">
+            <p>
+              <span>O</span>ur team of dedicated plant experts meticulously
+              nurtures each plant before it reaches your doorstep. With a
+              passion for greenery and years of experience, we ensure every
+              plant is healthy, vibrant, and ready to thrive in its new home.
+            </p>
+          </div>
         </div>
         <div class="container">
           <div
@@ -160,9 +148,6 @@
           </div>
         </div>
       </section>
-    </header>
-    <main>
-      <section class="experts"></section>
       <!--ANIMATION
       <section class="animation">
         <section class="plant-tray" id="section1">
