@@ -120,6 +120,24 @@ body {
   background-color: transparent;
 }
 
+.nav-item a {
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: #f2b56b;
+}
+
+.nav-item i {
+  color: #fff;
+  font-size: 26px;
+}
+
+.nav-item i:hover {
+  color: #f2b56b;
+}
+
 /* HERO */
 
 .hero {
@@ -203,7 +221,7 @@ body {
 .story-text {
   display: flex;
   flex-direction: column;
-  text-align: justify;
+  text-align: center;
   padding: 20px;
 }
 
@@ -225,12 +243,15 @@ body {
 }
 
 .promise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #fff;
   border-radius: 2em;
   height: auto;
   margin: 10px;
   padding: 20px;
-  text-align: justify;
+  text-align: center;
   border-color: #0a0d0b;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -253,6 +274,9 @@ body {
 }
 
 .mission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #fff;
   border-radius: 2em;
   height: auto;
@@ -260,6 +284,7 @@ body {
   padding: 20px;
   border-color: #0a0d0b;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .mission h5 {
@@ -495,6 +520,23 @@ body {
   display: flex;
   align-self: center;
   border-radius: 100%;
+}
+
+.circle-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  align-items: center;
+}
+
+.circle-button img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* MODAL */
