@@ -1,4 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
+  console.log("Document is ready");
+
   function showLoader() {
     $("#loader").show();
   }
@@ -153,7 +155,9 @@ $(document).ready(function() {
     }
     const lowerCaseValue = value.toLowerCase();
     for (let key in typeMapping) {
-      if (typeMapping[key].map(v => v.toLowerCase()).includes(lowerCaseValue)) {
+      if (
+        typeMapping[key].map((v) => v.toLowerCase()).includes(lowerCaseValue)
+      ) {
         return key;
       }
     }
@@ -175,14 +179,17 @@ $(document).ready(function() {
     let cycleFilter = $("#cycle").val().trim().toLowerCase();
     let indoorFilter = $("#indoor").val().trim().toLowerCase();
     let typeFilter = $("#type").val().trim();
-    let filteredPlants = plants.filter(plant =>
+    let hardinessFilter = $("#hardiness").val().trim();
+
+    let filteredPlants = plants.filter((plant) =>
       filterPlants(
         plant,
         sunlightFilter,
         wateringFilter,
         cycleFilter,
         indoorFilter,
-        typeFilter
+        typeFilter,
+        hardinessFilter
       )
     );
     displayPlants(filteredPlants);
@@ -194,13 +201,14 @@ $(document).ready(function() {
     wateringFilter,
     cycleFilter,
     indoorFilter,
-    typeFilter
+    typeFilter,
+    hardinessFilter
   ) {
     let sunlightMatch =
       sunlightFilter === "" ||
       (Array.isArray(plant.sunlight) &&
         plant.sunlight
-          .map(s => s.trim().toLowerCase())
+          .map((s) => s.trim().toLowerCase())
           .includes(sunlightFilter));
     let wateringMatch =
       wateringFilter === "" ||
@@ -215,9 +223,22 @@ $(document).ready(function() {
     let typeMatch =
       typeFilter === "" ||
       (plant.type && normalizePlantType(plant.type.trim()) === typeFilter);
+    let hardinessMatch = true;
+
+    if (hardinessFilter !== "") {
+      let hardiness = parseInt(hardinessFilter);
+      let minZone = parseInt(plant.hardiness.min);
+      let maxZone = parseInt(plant.hardiness.max);
+      hardinessMatch = hardiness >= minZone && hardiness <= maxZone;
+    }
 
     return (
-      sunlightMatch && wateringMatch && cycleMatch && indoorMatch && typeMatch
+      sunlightMatch &&
+      wateringMatch &&
+      cycleMatch &&
+      indoorMatch &&
+      typeMatch &&
+      hardinessMatch
     );
   }
 
@@ -237,14 +258,14 @@ $(document).ready(function() {
       type: "GET",
       url: "detailed_plants.json",
       dataType: "json",
-      beforeSend: function() {
+      beforeSend: function () {
         showLoader();
       },
-      success: function(response) {
+      success: function (response) {
         hideLoader();
-        response.forEach(plant => {
+        response.forEach((plant) => {
           if (Array.isArray(plant.sunlight)) {
-            plant.sunlight = plant.sunlight.map(value =>
+            plant.sunlight = plant.sunlight.map((value) =>
               normalizeSunlightCondition(value.trim().toLowerCase())
             );
           }
@@ -253,13 +274,14 @@ $(document).ready(function() {
           }
         });
         displayPlants(response);
-        $(
-          "#sunlight, #watering, #cycle, #indoor, #type"
-        ).on("change", function() {
-          applyFilters(response);
-        });
+        $("#sunlight, #watering, #cycle, #indoor, #type, #hardiness").on(
+          "change",
+          function () {
+            applyFilters(response);
+          }
+        );
       },
-      error: function(textStatus, errorThrown) {
+      error: function (textStatus, errorThrown) {
         hideLoader();
         console.error("Error: " + textStatus, errorThrown);
         alert("Failed to load plant data: " + errorThrown);
@@ -271,9 +293,49 @@ $(document).ready(function() {
     return (Math.random() * (max - min) + min).toFixed(2);
   }
 
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+
+  function handleAddToCartClick(event) {
+    event.preventDefault();
+    const plantCard = event.target.closest(".plant-card");
+    const priceP = plantCard.querySelector(".price");
+    const plantId = plantCard.getAttribute("data-plant-id");
+
+    if (priceP && plantId) {
+      const price = priceP.textContent;
+      const cartData = JSON.stringify({ id: plantId, price: price });
+      setCookie("cartData", cartData, 1);
+      console.log("Cookie set: ", document.cookie);
+    } else {
+      console.error("Price element or plant ID not found");
+    }
+  }
+
+  // Add event listener to dynamically created add-to-cart buttons
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".add-to-cart-btn")) {
+      handleAddToCartClick(event);
+    }
+  });
+
   function displayPlants(plants) {
     $("#plant-container").empty();
-    plants.forEach(data => {
+    if (plants.length === 0) {
+      $("#no-plants-message").show();
+      return;
+    } else {
+      $("#no-plants-message").hide();
+    }
+
+    plants.forEach((data) => {
       const normalizedType = normalizePlantType(data.type);
       if (normalizedType === "Trees") {
         return;
@@ -294,19 +356,19 @@ $(document).ready(function() {
 
       let plantCard = `
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
-                <div class="plant-card card h-100">
+                <div class="plant-card card h-100" data-plant-id="${data.id}">
                     <img src="${imageUrl}" alt="${data.common_name}" class="card-img-top img-fluid">
                     <div class="card-body">
                         <div class="plant-title">
                             <div class="row ">
                                 <div class="col">
                                     <p class="common-name text-capitalize">${data.common_name}</p>
-                                      <p>$${randomPrice}</p>
+                                      <p class="price">$${randomPrice}</p>
                                 </div>
                                 <div class="col-auto cart">
-                                  <a href="#" class="btn ">
+                                  <button class="add-to-cart-btn btn ">
                                 <img src="images/cart-plus-solid.svg" alt="Cart Icon">
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                             <div class="plant-description row mx-auto">
@@ -416,8 +478,7 @@ $(document).ready(function() {
   </tr>
   <tr>
       <td>Watering</td>
-      <td>${data.watering_general_benchmark.value} ${data
-        .watering_general_benchmark.unit}</td>
+      <td>${data.watering_general_benchmark.value} ${data.watering_general_benchmark.unit}</td>
       </tr>
       <tr>
       <td>Pruning</td>
@@ -444,6 +505,20 @@ $(document).ready(function() {
 
   //logUniqueTypeValues();
   // logUniqueSunlightValues();
+
+  function resetFilters() {
+    $("#sunlight").val("");
+    $("#watering").val("");
+    $("#cycle").val("");
+    $("#indoor").val("");
+    $("#type").val("");
+    $("#hardiness").val("");
+    loadPlantApi();
+  }
+  $("#reset-filters").on("click", function (event) {
+    event.preventDefault();
+    resetFilters();
+  });
 
   loadPlantApi();
 });

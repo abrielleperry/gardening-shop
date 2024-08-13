@@ -13,6 +13,20 @@
 }
 
 @font-face {
+  font-family: "Montserrat light";
+  src: url("fonts/Montserrat-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat exl";
+  src: url("fonts/Montserrat-ExtraLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "The Seasons Bold";
   src: url("fonts/theseason-bold.otf") format("truetype");
   font-weight: normal;
@@ -212,6 +226,16 @@ body {
 
 /* FILTER */
 
+.filter label {
+  font-family: "Montserrat medium";
+  font-size: 18px;
+}
+
+.filter option {
+  font-family: "Montserrat";
+  font-size: 18px;
+}
+
 .multi-colored-circle {
   width: 16px;
   height: 16px;
@@ -232,9 +256,20 @@ body {
 
 /* PLANT PRODUCT SECTION */
 
+.price {
+  font-family: "Montserrat light";
+  font-size: 18px;
+}
+
+.product-page {
+  padding-top: 60px;
+}
+
 #plant-count {
   font-family: "Montserrat medium";
   font-size: 18px;
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 .plant-card {
@@ -271,8 +306,6 @@ body {
 }
 
 .plant-title {
-  font-family: "Lora";
-  font-size: 16px;
   text-align: start;
   color: #0a0d0b;
   white-space: nowrap;
@@ -389,4 +422,80 @@ body {
 
 .table-responsive tr {
   font-family: "Montserrat";
+}
+
+/* NO PLANTS MESSAGE */
+.no-plants p {
+  font-family: "Montserrat";
+}
+
+.no-plants .btn {
+  background-color: #f2b56b;
+  font-family: "Montserrat";
+  color: #fff;
+  width: 200px;
+  margin: auto;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  background-color: #2c402f;
+  color: #fff;
+}
+
+.footer-container {
+  flex-direction: row;
+  padding-bottom: 60px;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo p {
+  font-family: "theseasons";
+  font-size: 26px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.footer-logo img {
+  margin-bottom: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 30px;
+}
+
+.contact-social {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.contact-social h3 {
+  font-family: "montserrat bold";
+  margin-bottom: 20px;
+}
+
+.contact-social p {
+  font-family: "montserrat";
+  font-size: 18px;
+}
+
+.signup-news form {
+  font-family: "montserrat";
+  font-size: 18px;
+  color: #fff;
+}
+
+.signup-news .btn {
+  background-color: #f27f3d;
+  color: #fff;
+  border-color: none;
 }
