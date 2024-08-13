@@ -14,18 +14,7 @@
     <meta name="author" content="BloomHouse" />
 
     <title>BloomHouse</title>
-    <style>
-      .hero {
-        display: flex;
-        background-image: url("images/holding-plants.jpg");
-        width: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 800px;
-        opacity: 100%;
-      }
-    </style>
+    <style></style>
 
     <link rel="stylesheet" href="styles.css" />
     <!-- FONTAWESOME -->
@@ -53,7 +42,7 @@
   </head>
   <body class="d-flex m-0 p-0">
     <header>
-      <nav class="navbar navbar-expand">
+      <nav class="navbar navbar-expand-lg">
         <div class="container-fluid mx-4">
           <a class="navbar-brand" href="index.html">
             <img
@@ -61,14 +50,14 @@
               alt="navbar-logo"
               width="90px"
               class="house-icon"
-              loading="lazy"
+              loading="eager"
             />
             <img
               src="images/logos/BHWhite.png"
               alt="navbar-logo-text"
               width="200px"
               class="bh-logo"
-              loading="lazy"
+              loading="eager"
             />
           </a>
           <button
@@ -89,6 +78,9 @@
             <ul class="navbar-nav mb-2 mb-lg-0 gap-5">
               <li class="nav-item">
                 <a class="nav-link text-white">SHOP PLANTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white">PLANT CARE</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white">ABOUT US</a>
@@ -113,12 +105,37 @@
     </header>
     <main>
       <div class="about container-fluid d-flex">
-        <div class="about-container bg-white">
-          <div class="row justify-content-end">
-            <div class="text-container col-9 p-4">
+        <div class="about-container">
+          <div class="text-row row">
+            <div class="story col-5">
+              <div class="story-text col-7">
+                <h5>
+                  <span>Our Story:</span>
+                  Passion for all things green and a desire to bring nature into
+                  every home
+                </h5>
+                <p>
+                  We understand that in today’s busy world, finding the time to
+                  visit garden centers or nurseries can be challenging. That’s
+                  why we created BloomHouse—to make plant shopping easy,
+                  convenient, and enjoyable from the comfort of your own home.
+                  With just a few clicks, you can explore our curated selection
+                  of indoor and outdoor plants, all carefully chosen to thrive
+                  in your space.
+                </p>
+              </div>
+              <div class="potted-plant">
+                <img
+                  src="images/angel-plant.png"
+                  alt="Potted angel plant"
+                  loading="eager"
+                />
+              </div>
+            </div>
+            <div class="promise col-3">
               <h5>
-                Our Promise:
-                <span>Fresh, Healthy Plants Delivered to Your Doorstep</span>
+                <span>Our Promise:</span>
+                Fresh, Healthy Plants Delivered to Your Doorstep
               </h5>
               <p>
                 We source the healthiest plants directly from trusted nurseries
@@ -129,20 +146,27 @@
                 and packed with care.
               </p>
             </div>
-          </div>
-          <div class="potted-plant">
-            <img
-              src="images/angel-plant.png"
-              alt="Potted angel plant"
-              loading="lazy"
-            />
+            <div class="mission col-3">
+              <h5>
+                <span>Our Mission:</span>
+                To help you grow your personal oasis
+              </h5>
+              <p>
+                At BloomHouse, our mission is simple: We’re committed to
+                providing you with healthy, vibrant plants and the knowledge you
+                need to help them flourish. From lush indoor plants that
+                brighten up your living room to hardy outdoor varieties that
+                make your garden shine, we’ve got something for every plant
+                lover.
+              </p>
+            </div>
           </div>
         </div>
       </div>
       <!--CARE -->
       <section class="care">
         <div class="our-team col-3">
-          <img src="images/vine-arch.png" alt="vine on arch" loading="lazy" />
+          <img src="images/vine-arch.png" alt="vine on arch" loading="eager" />
           <div class="our-team-text col-5">
             <p>
               <span>O</span>ur team of dedicated plant experts meticulously
@@ -164,35 +188,35 @@
                   <img
                     src="images/experts/expert1.jpg"
                     alt="Expert"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert2.jpg"
                     alt="Expert"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert3.jpg"
                     alt="Expert"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert4.jpg"
                     alt="Expert"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert5.jpg"
                     alt="Expert"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </li>
               </ul>
@@ -348,7 +372,7 @@
                   <img
                     src="images/sad-plant.png"
                     alt="Sad plant"
-                    loading="lazy"
+                    loading="eager"
                   />
                 </div>
                 <p class="text-center" style="font-size: 40px">Oops!</p>
@@ -379,7 +403,7 @@
           <img
             src="images/BloomHouseTogether.png"
             alt="BloomHouse logo"
-            loading="lazy"
+            loading="eager"
           />
           <p>Where Passionate Gardeners Find Their Perfect Plants</p>
         </div>
@@ -393,21 +417,21 @@
               <img
                 src="images/social-media/facebook.png"
                 alt="Facebook"
-                loading="lazy"
+                loading="eager"
               />
             </a>
             <a href="#">
               <img
                 src="images/social-media/instagram.png"
                 alt="Instagram"
-                loading="lazy"
+                loading="eager"
               />
             </a>
             <a href="#">
               <img
                 src="images/social-media/tik-tok.png"
                 alt="TikTok"
-                loading="lazy"
+                loading="eager"
               />
             </a>
           </div>
@@ -454,6 +478,7 @@
     ></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="script.js"></script>
+
     <button id="back-to-top" class="btn btn-secondary">
       <i class="fa-solid fa-arrow-up" style="color: #ffd877"></i>
     </button>

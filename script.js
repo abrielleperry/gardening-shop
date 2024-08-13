@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  console.log("Document is ready");
-
   function showLoader() {
     $("#loader").show();
   }
@@ -270,7 +268,7 @@ $(document).ready(function () {
   function loadPlantApi() {
     $.ajax({
       type: "GET",
-      url: "detailed_plants.json",
+      url: "plants_with_prices.json",
       dataType: "json",
       beforeSend: function () {
         showLoader();
@@ -303,42 +301,6 @@ $(document).ready(function () {
     });
   }
 
-  function getRandomPrice(min = 5, max = 100) {
-    return (Math.random() * (max - min) + min).toFixed(2);
-  }
-
-  function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-      const date = new Date();
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-      expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-  }
-
-  function handleAddToCartClick(event) {
-    event.preventDefault();
-    const plantCard = event.target.closest(".plant-card");
-    const priceP = plantCard.querySelector(".price");
-    const plantId = plantCard.getAttribute("data-plant-id");
-
-    if (priceP && plantId) {
-      const price = priceP.textContent;
-      const cartData = JSON.stringify({ id: plantId, price: price });
-      setCookie("cartData", cartData, 1);
-      console.log("Cookie set: ", document.cookie);
-    } else {
-      console.error("Price element or plant ID not found");
-    }
-  }
-
-  document.addEventListener("click", function (event) {
-    if (event.target.closest(".add-to-cart-btn")) {
-      handleAddToCartClick(event);
-    }
-  });
-
   function displayPlants(plants) {
     $("#plant-container").empty();
     if (plants.length === 0) {
@@ -365,18 +327,17 @@ $(document).ready(function () {
       let firstSunlightCondition = Array.isArray(data.sunlight)
         ? data.sunlight[0]
         : data.sunlight;
-      let randomPrice = getRandomPrice();
 
       let plantCard = `
             <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
-                <div class="plant-card card h-100" data-plant-id="${data.id}">
+                <div class="plant-card card h-100">
                     <img src="${imageUrl}" alt="${data.common_name}" class="card-img-top img-fluid">
                     <div class="card-body">
                         <div class="plant-title">
                             <div class="row ">
                                 <div class="col">
                                     <p class="common-name text-capitalize">${data.common_name}</p>
-                                      <p class="price">$${randomPrice}</p>
+                                      <p class="price">$${data.price}</p>
                                 </div>
                                 <div class="col-auto cart">
                                   <button class="add-to-cart-btn btn ">
