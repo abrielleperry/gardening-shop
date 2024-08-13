@@ -1,0 +1,9 @@
+POST http://127.0.0.1:4242/add_to_cart
+Content-Type: application/json
+
+{
+    "id": "prod_001",
+    "common_name": "T-shirt",
+    "price": 2000,
+    "quantity": 1
+}

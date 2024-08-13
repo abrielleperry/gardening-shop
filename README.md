@@ -22,3 +22,20 @@ python3 -m flask run --port=4242
 ~~~
 
 3. Go to [http://localhost:4242/checkout.html](http://localhost:4242/checkout.html)
+
+~~~
+
+## Environment Variables (already in requirements.txt file)
+ 1.  pip install pyyaml
+ 2.  Put your keys in config.yml file
+
+development:
+  SECRET_KEY: your_secret_key
+  STRIPE_PRIVATE_KEY: sk_test_your_stripe_secret_key
+  FLASK_ENV: development
+
+production:
+  SECRET_KEY: your_production_secret_key
+  STRIPE_PRIVATE_KEY: sk_live_your_stripe_secret_key
+  FLASK_ENV: production
+~~~
