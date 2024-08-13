@@ -1,0 +1,663 @@
+@font-face {
+  font-family: "Lora";
+  src: url("fonts/Lora-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat light";
+  src: url("fonts/Montserrat-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat exl";
+  src: url("fonts/Montserrat-ExtraLight.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "The Seasons Bold";
+  src: url("fonts/theseason-bold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "The Seasons it";
+  src: url("fonts/Fontspring-DEMO-theseasons-it.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat Medium";
+  src: url("fonts/Montserrat-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat bold";
+  src: url("fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "theseasons";
+  src: url("fonts/theseasons-reg.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lora-Medium";
+  src: url("fonts/Lora-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "theseasons-bold";
+  src: url("fonts/theseasons-bd.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+.btn:focus {
+  outline: 2px solid #e07a5f;
+  outline-offset: 2px;
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff !important;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* NAVBAR */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #2c402f;
+}
+
+.navbar-toggler {
+  display: block;
+  border: none;
+  background-color: transparent;
+}
+
+.nav-item a {
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: #f2b56b;
+}
+
+.nav-item i {
+  color: #fff;
+  font-size: 26px;
+}
+
+.nav-item i:hover {
+  color: #f2b56b;
+}
+
+/* HERO */
+
+.hero {
+  display: flex;
+  background-image: url("images/holding-plants.jpg");
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  opacity: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+    background-size: cover;
+    padding: 1rem;
+  }
+}
+
+.headers {
+  justify-content: start;
+}
+
+.header-one {
+  margin-left: 20px;
+}
+
+.header-one h1 {
+  font-family: "the seasons bold";
+  color: #fff;
+  font-size: 70px;
+}
+
+.header-one h3 {
+  font-family: "the seasons bold";
+  color: #fff;
+  font-size: 50px;
+}
+
+/* ABOUT */
+
+.about {
+  width: 100%;
+  height: 80vh;
+  background-color: #2c402f;
+  border-color: #0a0d0b;
+}
+
+.about span {
+  color: #a64b29;
+  font-family: "the seasons bold";
+}
+
+.about-container {
+  margin: 60px;
+}
+
+.text-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.story {
+  display: flex;
+  position: relative;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 2em;
+
+  justify-content: flex-end;
+  border-color: #0a0d0b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.story-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.story h5 {
+  font-family: "theseasons";
+  color: #a64b29;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  font-size: 24px;
+}
+
+.story p {
+  font-family: "montserrat";
+  color: #0a0d0b;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.promise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2em;
+  height: auto;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  border-color: #0a0d0b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.promise h5 {
+  font-family: "theseasons";
+  color: #a64b29;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  font-size: 24px;
+}
+
+.promise p {
+  font-family: "montserrat";
+  color: #0a0d0b;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.mission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2em;
+  height: auto;
+  margin: 10px;
+  padding: 20px;
+  border-color: #0a0d0b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.mission h5 {
+  font-family: "theseasons";
+  color: #a64b29;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  font-size: 24px;
+}
+
+.mission p {
+  font-family: "montserrat";
+  color: #0a0d0b;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.potted-plant {
+  position: absolute;
+  top: 80px;
+  left: -100px;
+}
+
+.potted-plant img {
+  width: 100%;
+  max-width: 470px;
+}
+
+/* CARE */
+
+.care {
+  display: flex;
+  background-color: #2c402f;
+  padding-bottom: 50px;
+}
+
+.care img {
+}
+
+.our-team {
+  position: relative;
+}
+
+.our-team-text {
+  position: absolute;
+  top: 130px;
+  left: 80px;
+  object-fit: contain;
+}
+
+.our-team-text span {
+  font-size: 40px;
+  font-family: "montserrat bold";
+}
+
+.our-team-text p {
+  color: #fff;
+  font-family: "montserrat";
+  text-align: left;
+  font-size: 17px;
+}
+
+.splide__slide > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.splide__track {
+  display: flex;
+  gap: 0 !important;
+}
+
+.splide__slide {
+  margin-right: 0 !important;
+}
+
+/* FILTER */
+
+.filter label {
+  font-family: "Montserrat medium";
+  font-size: 18px;
+}
+
+.filter option {
+  font-family: "Montserrat";
+  font-size: 18px;
+}
+
+.multi-colored-circle {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* PLANT PRODUCT SECTION */
+
+.price {
+  font-family: "Montserrat light";
+  font-size: 18px;
+}
+
+.product-page {
+  padding-top: 60px;
+}
+
+#plant-count {
+  font-family: "Montserrat medium";
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.plant-card {
+  background-color: #ffff !important;
+  border-color: #81c784;
+  border-radius: 2em !important;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  margin: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-bottom-right-radius: 4em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 16px;
+  color: #0a0d0b;
+  flex: 1;
+}
+
+.common-name {
+  font-family: "Lora";
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+
+.plant-title {
+  text-align: start;
+  color: #0a0d0b;
+  white-space: nowrap;
+}
+
+.card .btn {
+  background-color: #e07a5f;
+  border-color: #e07a5f;
+  font-family: "Montserrat";
+}
+
+.plant-description {
+  display: flex;
+  justify-content: space-around;
+}
+
+.plant-description svg {
+  max-height: 30px;
+  max-width: 30px;
+  align-items: center;
+}
+
+.col-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.col-content p {
+  font-family: "Montserrat";
+  text-align: center;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.col-content.multiple-conditions p {
+  white-space: pre-wrap;
+}
+
+.bottom p {
+  font-family: "Montserrat";
+}
+
+.bottom span {
+  font-size: 10px;
+}
+
+.bottom {
+  padding: 10px;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+  overflow: hidden;
+  background-image: url("images/dirt.png");
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  height: 80px;
+}
+
+@media (max-width: 576px) {
+  .plant-card {
+    max-width: 100%;
+    margin: 5px 0;
+  }
+}
+
+.btn img {
+  height: 1em;
+  width: 1em;
+}
+
+.bottom .btn {
+  display: flex;
+  align-self: center;
+  border-radius: 100%;
+}
+
+.circle-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  align-items: center;
+}
+
+.circle-button img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.circle-buton:hover {
+  background-color: #2c402f;
+}
+
+/* MODAL */
+
+.modal-dialog {
+  width: 100%;
+}
+
+.description p {
+  text-align: justify;
+  font-family: "Montserrat";
+  font-size: 16px;
+}
+
+.modal-img img {
+  float: left;
+  max-width: 150px;
+  max-height: 150px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 1em;
+  margin-right: 15px;
+}
+
+.modal-header {
+  border-bottom: none !important;
+}
+
+.modal-header h1 {
+  font-family: "Lora-Medium";
+  font-size: 26px;
+}
+
+.modal-header p {
+  font-family: "Montserrat-Medium";
+  font-size: 16px;
+}
+
+.table-responsive tr {
+  font-family: "Montserrat";
+}
+
+/* NO PLANTS MESSAGE */
+.no-plants p {
+  font-family: "Montserrat";
+}
+
+.no-plants .btn {
+  background-color: #f2b56b;
+  font-family: "Montserrat";
+  color: #fff;
+  width: 200px;
+  margin: auto;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  background-color: #2c402f;
+  color: #fff;
+}
+
+.footer-container {
+  flex-direction: row;
+  padding-bottom: 60px;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo p {
+  font-family: "theseasons";
+  font-size: 26px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.footer-logo img {
+  margin-bottom: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 30px;
+}
+
+.contact-social {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+}
+
+.contact-social h3 {
+  font-family: "montserrat bold";
+  margin-bottom: 20px;
+}
+
+.contact-social p {
+  font-family: "montserrat";
+  font-size: 18px;
+}
+
+.signup-news form {
+  font-family: "montserrat";
+  font-size: 18px;
+  color: #fff;
+}
+
+.signup-news .btn {
+  background-color: #f27f3d;
+  color: #fff;
+  border-color: none;
+}
