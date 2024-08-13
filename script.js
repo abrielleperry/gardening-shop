@@ -268,7 +268,7 @@ $(document).ready(function () {
   function loadPlantApi() {
     $.ajax({
       type: "GET",
-      url: "plants_with_prices.json",
+      url: "../json/plants_with_prices.json",
       dataType: "json",
       beforeSend: function () {
         showLoader();
