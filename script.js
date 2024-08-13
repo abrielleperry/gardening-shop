@@ -341,7 +341,7 @@ $(document).ready(function () {
                                 </div>
                                 <div class="col-auto cart">
                                   <button class="add-to-cart-btn btn ">
-                                <img src="images/cart-plus-solid.svg" alt="Cart Icon">
+                                <img src="/images/cart-plus-solid.svg" alt="Cart Icon">
                                     </button>
                                 </div>
                             </div>
@@ -376,7 +376,7 @@ $(document).ready(function () {
                     </div>
                     <div class="bottom">
                 <button type="button" class="btn mx-auto circle-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <img src="images/plus-solid.svg" alt="plus sign">
+    <img src="/images/plus-solid.svg" alt="plus sign">
 </button>
                     </div>
                 </div>
