@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="BloomHouse: Where Passionate Gardeners Find Their Perfect Plants"
+      content="BloomHouse offers a wide variety of fresh, healthy plants delivered directly to your doorstep. Discover the perfect plants for your garden, sourced from trusted nurseries and selected for quality."
     />
+    <meta
+      name="keywords"
+      content="plants, gardening, buy plants online, garden, home plants, nursery, plant care"
+    />
+    <meta name="author" content="BloomHouse" />
+
     <title>BloomHouse</title>
+    <style>
+      .hero {
+        display: flex;
+        background-image: url("images/holding-plants.jpg");
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 800px;
+        opacity: 100%;
+      }
+    </style>
+
     <link rel="stylesheet" href="styles.css" />
     <!-- FONTAWESOME -->
     <link
@@ -42,12 +61,14 @@
               alt="navbar-logo"
               width="90px"
               class="house-icon"
+              loading="lazy"
             />
             <img
               src="images/logos/BHWhite.png"
               alt="navbar-logo-text"
               width="200px"
               class="bh-logo"
+              loading="lazy"
             />
           </a>
           <button
@@ -110,14 +131,18 @@
             </div>
           </div>
           <div class="potted-plant">
-            <img src="images/angel-plant.png" alt="" />
+            <img
+              src="images/angel-plant.png"
+              alt="Potted angel plant"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
       <!--CARE -->
       <section class="care">
         <div class="our-team col-3">
-          <img src="images/vine-arch.png" alt="vine on arch" />
+          <img src="images/vine-arch.png" alt="vine on arch" loading="lazy" />
           <div class="our-team-text col-5">
             <p>
               <span>O</span>ur team of dedicated plant experts meticulously
@@ -136,19 +161,39 @@
             <div class="splide__track">
               <ul class="splide__list">
                 <li class="splide__slide">
-                  <img src="images/experts/expert1.jpg" alt="" />
+                  <img
+                    src="images/experts/expert1.jpg"
+                    alt="Expert"
+                    loading="lazy"
+                  />
                 </li>
                 <li class="splide__slide">
-                  <img src="images/experts/expert2.jpg" alt="" />
+                  <img
+                    src="images/experts/expert2.jpg"
+                    alt="Expert"
+                    loading="lazy"
+                  />
                 </li>
                 <li class="splide__slide">
-                  <img src="images/experts/expert3.jpg" alt="" />
+                  <img
+                    src="images/experts/expert3.jpg"
+                    alt="Expert"
+                    loading="lazy"
+                  />
                 </li>
                 <li class="splide__slide">
-                  <img src="images/experts/expert4.jpg" alt="" />
+                  <img
+                    src="images/experts/expert4.jpg"
+                    alt="Expert"
+                    loading="lazy"
+                  />
                 </li>
                 <li class="splide__slide">
-                  <img src="images/experts/expert5.jpg" alt="" />
+                  <img
+                    src="images/experts/expert5.jpg"
+                    alt="Expert"
+                    loading="lazy"
+                  />
                 </li>
               </ul>
             </div>
@@ -300,7 +345,11 @@
                 style="display: none"
               >
                 <div class="sad-plant row-2 text-center">
-                  <img src="images/sad-plant.png" alt="Sad plant" />
+                  <img
+                    src="images/sad-plant.png"
+                    alt="Sad plant"
+                    loading="lazy"
+                  />
                 </div>
                 <p class="text-center" style="font-size: 40px">Oops!</p>
                 <p class="text-center" style="font-size: 36px">
@@ -310,7 +359,11 @@
                   Check back later for new arrivals
                 </p>
 
-                <button id="reset-filters" class="btn btn-lg">
+                <button
+                  id="reset-filters"
+                  class="btn btn-lg"
+                  aria-label="Reset all filters"
+                >
                   Reset Filters
                 </button>
               </div>
@@ -323,7 +376,11 @@
     <footer>
       <div class="footer-container container-fluid row">
         <div class="footer-logo col-5">
-          <img src="images/BloomHouseTogether.png" alt="" />
+          <img
+            src="images/BloomHouseTogether.png"
+            alt="BloomHouse logo"
+            loading="lazy"
+          />
           <p>Where Passionate Gardeners Find Their Perfect Plants</p>
         </div>
         <div class="contact-social col-3">
@@ -333,13 +390,25 @@
           <p>Mesa, AZ 85203</p>
           <div class="socials">
             <a href="#">
-              <img src="images/social-media/facebook.png" alt="Facebook" />
+              <img
+                src="images/social-media/facebook.png"
+                alt="Facebook"
+                loading="lazy"
+              />
             </a>
             <a href="#">
-              <img src="images/social-media/instagram.png" alt="Instagram" />
+              <img
+                src="images/social-media/instagram.png"
+                alt="Instagram"
+                loading="lazy"
+              />
             </a>
             <a href="#">
-              <img src="images/social-media/tik-tok.png" alt="TikTok" />
+              <img
+                src="images/social-media/tik-tok.png"
+                alt="TikTok"
+                loading="lazy"
+              />
             </a>
           </div>
         </div>
@@ -385,5 +454,8 @@
     ></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="script.js"></script>
+    <button id="back-to-top" class="btn btn-secondary">
+      <i class="fa-solid fa-arrow-up" style="color: #ffd877"></i>
+    </button>
   </body>
 </html>
