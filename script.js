@@ -319,7 +319,6 @@ $(document).ready(function () {
     }
   }
 
-  // Add event listener to dynamically created add-to-cart buttons
   document.addEventListener("click", function (event) {
     if (event.target.closest(".add-to-cart-btn")) {
       handleAddToCartClick(event);
