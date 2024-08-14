@@ -68,8 +68,6 @@ def cancel():
 @app.route('/create-checkout-session', methods=['POST', 'GET'])
 def create_checkout_session():
     cart = get_cart_from_cookie()
-
-    
     if not cart:
         return jsonify({"error": "Your cart is empty"}), 400
     
@@ -77,29 +75,29 @@ def create_checkout_session():
     total_amount = 0
     
     for item in cart:
-        # If item['price'] is in dollars, convert it to cents
-        unit_amount = int(float(item['price']) * 100)
-
         line_items.append({
              'price_data': {
                 'currency': 'usd',
                 'product_data': {
                     'name': item['commonName'],
                 },
-                'unit_amount': unit_amount,
+                'unit_amount': item['price'],
                 
             },
             'quantity': item['quantity'],
         })
-    total_amount += unit_amount * item['quantity']
-
+    total_amount += item['price'] * item['quantity']
     try:
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
-            line_items=line_items,
+             line_items=[{
+                'price': 'price_1PkKCGEYLRwiTz0PY7kj6Oza', 
+                'quantity': 1,
+            }],
+
             mode='payment',
             success_url= YOUR_DOMAIN + '/success.html',
-            cancel_url= YOUR_DOMAIN + '/cancel.html',
+            cancel_url= YOUR_DOMAIN + '/cart.html',
         )
     except Exception as e:
         return str(e)
@@ -177,6 +175,26 @@ def add_to_cart2():
             'common_name': common_name,
             'price': price,
             'quantity': quantity
-        }) 
+        })
+
+    # Convert cart to JSON and store it in a cookie
+    #cart_json = json.dumps(cart)
+    #response = make_response(jsonify(cart))
+    #response.set_cookie('cart', cart_json)
+    #print(cart) #check what is added to cart
+    #return response-->
+
+#@app.route('/view_cart', methods=['POST', 'GET'])
+#def view_cart():
+  #  cart_cookie = request.cookies.get('cart')
+  #  if cart_cookie:
+  #      print(cart_cookie) #check what is being retrieved
+  #      cart = json.loads(cart_cookie)
+  #      return jsonify(cart)
+  #  else:
+  #      return jsonify([])  # Return an empty cart if the cookie is not set
+
+
+
 if __name__ == '__main__':
     app.run(port=4242)
