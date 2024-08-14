@@ -565,8 +565,12 @@ body {
   object-fit: contain;
 }
 
-.circle-buton:hover {
-  background-color: #2c402f;
+.circle-button:hover {
+  background-color: #f2b56b !important;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #f2b56b !important;
 }
 
 /* MODAL */

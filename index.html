@@ -13,8 +13,10 @@
     />
     <meta name="author" content="BloomHouse" />
 
-    <title>BloomHouse</title>
-    <style></style>
+    <title>
+      Welcome to BloomHouse. Where Passionate Gardeners Find Their Perfect
+      Plants.
+    </title>
 
     <link rel="stylesheet" href="styles.css" />
     <!-- FONTAWESOME -->
@@ -41,20 +43,20 @@
     />
   </head>
   <body class="d-flex m-0 p-0">
-    <header>
-      <nav class="navbar navbar-expand-lg">
+    <header role="banner">
+      <nav class="navbar navbar-expand-lg" role="navigation">
         <div class="container-fluid mx-4">
           <a class="navbar-brand" href="index.html">
             <img
               src="images/logos/BHIconWhite.png"
-              alt="navbar-logo"
+              alt="Bloomhouse logo icon of house and flowers"
               width="90px"
               class="house-icon"
               loading="eager"
             />
             <img
               src="images/logos/BHWhite.png"
-              alt="navbar-logo-text"
+              alt="Bloomhouse logo text"
               width="200px"
               class="bh-logo"
               loading="eager"
@@ -69,7 +71,7 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars" style="color: #ffffff"></i>
           </button>
           <div
             class="collapse navbar-collapse justify-content-end"
@@ -94,7 +96,7 @@
           </div>
         </div>
       </nav>
-      <section class="hero">
+      <section class="hero" role="hero">
         <div class="headers">
           <div class="header-one pt-3">
             <h1>Welcome to BloomHouse</h1>
@@ -104,11 +106,11 @@
       </section>
     </header>
     <main>
-      <div class="about container-fluid d-flex" id="about-us">
+      <div class="about container-fluid d-flex" id="about-us" role="about">
         <div class="about-container">
           <div class="text-row row">
             <div class="story col-5">
-              <div class="story-text col-7">
+              <div class="story-text col-12 col-md-7">
                 <h5>
                   <span>Our Story:</span>
                   Passion for all things green and a desire to bring nature into
@@ -126,12 +128,12 @@
               <div class="potted-plant">
                 <img
                   src="images/angel-plant.png"
-                  alt="Potted angel plant"
+                  alt="Angel plant in plastic green pot"
                   loading="eager"
                 />
               </div>
             </div>
-            <div class="promise col-3">
+            <div class="promise col-12 col-md-3">
               <h5>
                 <span>Our Promise:</span>
                 Fresh, Healthy Plants Delivered to Your Doorstep
@@ -145,7 +147,7 @@
                 and packed with care.
               </p>
             </div>
-            <div class="mission col-3">
+            <div class="mission col-12 col-md-3">
               <h5>
                 <span>Our Mission:</span>
                 To help you grow your personal oasis
@@ -163,7 +165,7 @@
         </div>
       </div>
       <!--CARE -->
-      <section class="care">
+      <section class="care" role="care">
         <div class="our-team col-3">
           <img src="images/vine-arch.png" alt="vine on arch" loading="eager" />
           <div class="our-team-text col-5">
@@ -179,42 +181,42 @@
           <div
             id="image-carousel"
             class="splide col"
-            aria-label="Beautiful Images"
+            aria-label="images of employees taking care of plants"
           >
             <div class="splide__track">
               <ul class="splide__list">
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert1.jpg"
-                    alt="Expert"
+                    alt="employee holding and looking at plant"
                     loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert2.jpg"
-                    alt="Expert"
+                    alt="Employee smiling and standing on ladder tending to plant"
                     loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert3.jpg"
-                    alt="Expert"
+                    alt="Employee watering plants with water hose"
                     loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert4.jpg"
-                    alt="Expert"
+                    alt="Employee taking notes about plant"
                     loading="eager"
                   />
                 </li>
                 <li class="splide__slide">
                   <img
                     src="images/experts/expert5.jpg"
-                    alt="Expert"
+                    alt="Employee inspecting plant health"
                     loading="eager"
                   />
                 </li>
@@ -225,7 +227,11 @@
       </section>
 
       <!--FILTER-->
-      <section class="product-page d-flex container-fluid" id="product-page">
+      <section
+        class="product-page d-flex container-fluid"
+        id="product-page"
+        role="product page"
+      >
         <div class="filter col-12 col-md-4 col-lg-2 ms-4 mt-4">
           <form id="filter-form" class="form-inline mb-4">
             <label class="mr-2" for="hardiness">Hardiness Zone</label>
@@ -291,6 +297,7 @@
               <option value="Edible Plants">Edible Plants</option>
               <option value="Weeds & Wild Plants">Weeds and Wild Plants</option>
             </select>
+            <!--
             <div class="mb-2">
               <label class="mr-2">Flower Color</label>
               <div>
@@ -344,7 +351,7 @@
                   data-filter="Multi-colored"
                 ></div>
               </div>
-            </div>
+            </div> -->
           </form>
         </div>
         <!--PLANT PRODUCTS-->
@@ -362,11 +369,12 @@
                 id="no-plants-message"
                 class="no-plants d-flex justify-content-center flex-column bg-white alert-info m-5"
                 style="display: none !important"
+                role="no plants message"
               >
                 <div class="sad-plant row-2 text-center">
                   <img
                     src="images/sad-plant.png"
-                    alt="Sad plant"
+                    alt="Sad plant with no leaves"
                     loading="eager"
                   />
                 </div>
@@ -381,7 +389,7 @@
                 <button
                   id="reset-filters"
                   class="btn btn-lg"
-                  aria-label="Reset all filters"
+                  aria-label="Reset all filters for entire plant product list"
                 >
                   Reset Filters
                 </button>
@@ -392,7 +400,7 @@
       </section>
     </main>
     <!--FOOTER-->
-    <footer>
+    <footer role="footer">
       <div class="footer-container container-fluid row">
         <div class="footer-logo col-5">
           <img
@@ -411,21 +419,21 @@
             <a href="#">
               <img
                 src="images/social-media/facebook.png"
-                alt="Facebook"
+                alt="Facebook icon"
                 loading="eager"
               />
             </a>
             <a href="#">
               <img
                 src="images/social-media/instagram.png"
-                alt="Instagram"
+                alt="Instagram icon"
                 loading="eager"
               />
             </a>
             <a href="#">
               <img
                 src="images/social-media/tik-tok.png"
-                alt="TikTok"
+                alt="TikTok icon"
                 loading="eager"
               />
             </a>
@@ -445,7 +453,9 @@
                 placeholder="Email address"
               />
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button aria-label="submit email button" type="submit" class="btn">
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -475,7 +485,11 @@
     <script src="script.js"></script>
     <script src="cart.js"></script>
 
-    <button id="back-to-top" class="btn btn-secondary">
+    <button
+      aria-label="back to top of page button"
+      id="back-to-top"
+      class="btn btn-secondary"
+    >
       <i class="fa-solid fa-arrow-up" style="color: #ffd877"></i>
     </button>
   </body>
