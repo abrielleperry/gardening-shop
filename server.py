@@ -91,7 +91,7 @@ def create_checkout_session():
             },
             'quantity': item['quantity'],
         })
-    total_amount += unit_amount * item['quantity']
+    total_amount += unit_amount * int(item['quantity'])
 
     try:
         checkout_session = stripe.checkout.Session.create(
@@ -149,34 +149,5 @@ def remove_from_cart():
 
     return save_cart_to_cookie(cart)
 
-@app.route('/add_to_cart2', methods=['POST', 'GET'])
-def add_to_cart2():
-    data = request.get_json(silent=True)
-    if data is None:
-        return jsonify({"error:"  "Missing JSON in request body"}), 400
-    product_id = request.json.get('id')
-    common_name = request.json.get('common_name')
-    price = request.json.get('price')
-    quantity = request.json.get('quantity', 1)  # Default quantity to 1 if not provided
-
-    # Retrieve existing cart data from cookie
-    cart_cookie = request.cookies.get('cart')
-    if cart_cookie:
-        cart = json.loads(cart_cookie)
-    else:
-        cart = []
-
-    # Add or update the product in the cart
-    for item in cart:
-        if item['id'] == product_id:
-            item['quantity'] += quantity
-            break
-    else:
-        cart.append({
-            'id': product_id,
-            'common_name': common_name,
-            'price': price,
-            'quantity': quantity
-        }) 
 if __name__ == '__main__':
     app.run(port=4242)
