@@ -170,7 +170,7 @@ body {
 
 .hero {
   display: flex;
-  background-image: url("images/holding-plants.jpg");
+  background-image: url("/static/images/holding-plants.jpg");
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -565,7 +565,7 @@ body {
   border-bottom-left-radius: 2em;
   border-bottom-right-radius: 2em;
   overflow: hidden;
-  background-image: url("images/dirt.png");
+  background-image: url("/static/images/dirt.png");
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
