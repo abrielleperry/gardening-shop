@@ -25,6 +25,21 @@ app.config.update(config[env])
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 app.config['STRIPE_PRIVATE_KEY'] = os.getenv('STRIPE_PRIVATE_KEY')
 stripe.api_key = app.config['STRIPE_PRIVATE_KEY'];
+YOUR_DOMAIN = 'http://localhost:4242'
+
+
+
+
+def get_cart_from_cookie():
+    cart_cookie = request.cookies.get('cart')
+    if cart_cookie:
+        return json.loads(cart_cookie)
+    return []
+
+def save_cart_to_cookie(cart):
+    response = make_response(jsonify(cart))
+    response.set_cookie('cart', json.dumps(cart), httponly=True, path='/')
+    return response
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -35,11 +50,20 @@ def checkout():
     # This will render the index.html file located in the 'templates' directory
     return render_template('checkout.html')
 
-@app.route('/cancel.html', methods=['POST', 'GET'])
+@app.route('/cart.html', methods=['POST', 'GET'])
+def cart():
+    # This will render the index.html file located in the 'templates' directory
+    return render_template('cart.html')
+
+@app.route('/success.html')
+def success():
+    # This will render the index.html file located in the 'templates' directory
+    return render_template('success.html')
+
+@app.route('/cancel.html')
 def cancel():
     # This will render the index.html file located in the 'templates' directory
     return render_template('cancel.html')
-
 
 @app.route('/create-checkout-session', methods=['POST', 'GET'])
 def create_checkout_session():
@@ -51,16 +75,59 @@ def create_checkout_session():
                 'quantity': 1,
             }],
             mode='payment',
-            success_url= render_template('/success.html'),
-            cancel_url= render_template('/cancel.html'),
+            success_url= YOUR_DOMAIN + '/success.html',
+            cancel_url= YOUR_DOMAIN + '/cart.html',
         )
     except Exception as e:
         return str(e)
 
     return redirect(checkout_session.url, code=303)
 
-@app.route('/add_to_cart', methods=['POST', 'GET'])
+
+
+@app.route('/add_to_cart', methods=['POST'])
 def add_to_cart():
+    cart = get_cart_from_cookie()
+
+    product_id = request.json.get('id')
+    quantity = request.json.get('quantity', 1)
+
+    product = products.get(product_id)
+    if not product:
+        return jsonify({"error": "Product not found"}), 404
+
+    # Check if the product is already in the cart
+    for item in cart:
+        if item['id'] == product_id:
+            item['quantity'] += quantity  # Update quantity
+            break
+    else:
+        # Add new item to the cart
+        cart.append({
+            'id': product_id,
+            'name': product['commonName'],
+            'price': product['price'],
+            'quantity': quantity
+        })
+
+    return save_cart_to_cookie(cart)
+
+@app.route('/view_cart', methods=['GET'])
+def view_cart():
+    cart = get_cart_from_cookie()
+    return jsonify(cart)
+
+@app.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    cart = get_cart_from_cookie()
+
+    product_id = request.json.get('id')
+    cart = [item for item in cart if item['id'] != product_id]
+
+    return save_cart_to_cookie(cart)
+
+@app.route('/add_to_cart2', methods=['POST', 'GET'])
+def add_to_cart2():
     data = request.get_json(silent=True)
     if data is None:
         return jsonify({"error:"  "Missing JSON in request body"}), 400
@@ -90,21 +157,21 @@ def add_to_cart():
         })
 
     # Convert cart to JSON and store it in a cookie
-    cart_json = json.dumps(cart)
-    response = make_response(jsonify(cart))
-    response.set_cookie('cart', cart_json)
-    print(cart) #check what is added to cart
-    return response
+    #cart_json = json.dumps(cart)
+    #response = make_response(jsonify(cart))
+    #response.set_cookie('cart', cart_json)
+    #print(cart) #check what is added to cart
+    #return response-->
 
-@app.route('/view_cart', methods=['POST', 'GET'])
-def view_cart():
-    cart_cookie = request.cookies.get('cart')
-    if cart_cookie:
-        print(cart_cookie) #check what is being retrieved
-        cart = json.loads(cart_cookie)
-        return jsonify(cart)
-    else:
-        return jsonify([])  # Return an empty cart if the cookie is not set
+#@app.route('/view_cart', methods=['POST', 'GET'])
+#def view_cart():
+  #  cart_cookie = request.cookies.get('cart')
+  #  if cart_cookie:
+  #      print(cart_cookie) #check what is being retrieved
+  #      cart = json.loads(cart_cookie)
+  #      return jsonify(cart)
+  #  else:
+  #      return jsonify([])  # Return an empty cart if the cookie is not set
 
 
 
