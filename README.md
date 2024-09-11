@@ -16,7 +16,7 @@ BloomHouse is an e-commerce website that allows gardening enthusiasts to explore
 -   **Shopping Cart:**  A fully functional cart that allows users to manage their selected items and view the total amount.
 -   **Checkout Process:**  Users can proceed to checkout with the items in their cart.
 
-## ## Technologies Used
+## Technologies Used
 
 -   **HTML & CSS:**  For the structure and styling of the website.
 -   **JavaScript:**  For dynamic content and interactivity.
@@ -25,13 +25,6 @@ BloomHouse is an e-commerce website that allows gardening enthusiasts to explore
 -   **Stripe:**  To simulate a payment during check out.
 
 
-## Technologies Used
-
-- **HTML/CSS**: I ensured semantic HTML and well-structured CSS.
-- **Accessibility**: I implemented accessibility best practices to make the web pages accessible to all users.
-- **Responsive Design**: The web pages were responsive and worked well on various screen sizes.
-- **Bootstrap**: I utilized Bootstrap components and grid system for faster development.
-- **JavaScript**: I used JavaScript to add interactivity and dynamic functionality.
 
 ## Installation
 
